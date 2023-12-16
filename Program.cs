@@ -27,13 +27,13 @@ namespace eLibrary
                     opt.LoginPath = "/User/Login";
                     opt.AccessDeniedPath = "/User/AccessDenied";
                 });
-            builder.Services.AddDbContext<ELibraryContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("local")));
+            builder.Services.AddDbContext<ELibraryContext>(opt => opt.UseSqlServer("Server=.; Database=elibraryDaatabaseHome; Integrated Security = true; TrustServerCertificate=Yes"));
             DbContextOptionsBuilder optionsBuilder = new DbContextOptionsBuilder();
-            optionsBuilder.UseSqlServer(builder.Configuration.GetConnectionString("local"));
-            /*using (var context = new ELibraryContext(optionsBuilder.Options))//вызов посева начальных данных
+            optionsBuilder.UseSqlServer("Server=.; Database=elibraryDaatabaseHome; Integrated Security = true; TrustServerCertificate=Yes");
+            using (var context = new ELibraryContext(optionsBuilder.Options))//вызов посева начальных данных
             {
                 EFInitialSeed.Seed(context);
-            }*/
+            }
             builder.Services.AddScoped<IRepository<User>, EFRepository<User>>();
             builder.Services.AddScoped<IRepository<Role>, EFRepository<Role>>();
             builder.Services.AddScoped<IRepository<Book>, EFRepository<Book>>();
