@@ -1,0 +1,58 @@
+﻿@model UpdateBookViewModel
+<head>
+    <link rel="stylesheet" href="~/styles/updateBook.css" />
+</head>
+
+<div class="background-container">
+    <input asp-for="Id" type="hidden" />
+    <div class="book-form">
+        <form method="post" enctype="multipart/form-data">
+            <h1>Изменение аудио</h1>
+            <div class="book-card">
+                <div class="book-card-left">
+                    <div class="form-element">
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" placeholder="Название" />
+                    </div>
+                    <div class="form-element">
+                        <label asp-for="Author"></label>
+                        <input asp-for="Author" placeholder="Автор" />
+                    </div>
+                    <div class="form-element">
+                        <label asp-for="PageCount"></label>
+                        <input asp-for="PageCount" placeholder="укажите положительное целое число" />
+                    </div>
+                    <div class="form-element">
+                        <label asp-for="CategoryId"></label>
+                        <select asp-for="CategoryId" asp-items="Model.Categories"></select>
+                    </div>
+                    <div class="form-element">
+                        <label asp-for="Photo"></label>
+                        <span>@Model.PhotoString</span>
+                        <input asp-for="Photo" accept=".png" />
+                    </div>
+                    <div class="form-element">
+                        <label asp-for="File"></label>
+                        <span>@Model.FileString</span>
+                        <input asp-for="File" accept=".pdf" />
+                    </div>
+                    <div asp-validation-summary="All" class="error-messages"></div>
+                    <div class="form-element form-element-buttons">
+                        <input type="button" id="backButton" value="Назад" />
+                        <input type="submit" value="Сохранить" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    // получаем кнопку по ее селектору CSS
+    let backButton = document.querySelector('#backButton');
+    // добавляем обработчик события
+    backButton.onclick = () => {
+        window.location = "/books/index";
+    };
+</script>
