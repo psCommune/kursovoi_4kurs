@@ -1,0 +1,45 @@
+﻿@model LoginViewModel
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/styles/login.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="side-image">
+            <div class="content">
+                <form method="post">
+                    <h1>MusicPlayer</h1>
+                    <h2>Слушай что угодно <br>в пробной версии</h2>
+                    <label asp-for="Username"></label>
+                    <input asp-for="Username" placeholder="Логин:" />
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" placeholder="Пароль:" />
+                    <div asp-validation-summary="All" class="error-messages"></div>
+                    <input type="submit" id="LoginStart" value="Вход в систему" />
+                    <div class="otdelitel">
+                        <p>---</p>
+                        <p>ИЛИ</p>
+                        <p>---</p>
+                    </div>
+                    <input type="button" id="goRegistration" value="Зарегистрироваться" />
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    // получаем кнопку по ее селектору CSS
+    let backButton = document.querySelector('#goRegistration');
+    // добавляем обработчик события
+    backButton.onclick = () => {
+        window.location = "/user/registration";
+    };
+</script>

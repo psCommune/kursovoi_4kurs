@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/styles/main.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="wrapper-center">
+        <header>
+            <nav>
+                <div class="brand">
+                    <a asp-controller="main" asp-action="index">
+                        <h1>MusicPlayer</h1>
+                    </a>
+                </div>
+                <div class="statusBar">
+                    <audio controls="controls">
+                        <source src="/audio/01 The Trail.mp3" type="audio/mpeg" />@* поддержка мп3 *@
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
+                </div>
+                <div class="links">
+                    <ul>
+                        <li><a asp-controller="User" asp-action="Logout">Выход</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="content">
+                @RenderBody()
+            </div>
+        </main>
+        <footer>
+            <p>Разработано в учебных целях <a href="https://vk.com/1sovet3">мною</a> в 2023 году</p>
+        </footer>
+    </div>
+</body>
+</html>
