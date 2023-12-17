@@ -12,12 +12,18 @@
             <nav>
                 <div class="brand">
                     <a asp-controller="main" asp-action="index">
-                        <h1>Электронная библиотека</h1>
+                        <h1>MusicPlayer</h1>
                     </a>
+                </div>
+                <div class="statusBar">
+                    <audio controls="controls">
+                        <source src="track.ogg" type="audio/ogg" />@* поддержка огг формата (обязательно для фаерфокса) *@
+                        <source src="track.mp3" type="audio/mpeg" />@* поддержка мп3 *@
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
                 </div>
                 <div class="links">
                     <ul>
-                        <li><a href="#">Личный кабинет</a></li>
                         <li><a asp-controller="User" asp-action="Logout">Выход</a></li>
                     </ul>
                 </div>
@@ -29,7 +35,7 @@
             </div>
         </main>
         <footer>
-            <p>Разработано <a href="http://ects.ru">ects</a> в 2023 году</p>
+            <p>Разработано в учебных целях <a href="https://vk.com/1sovet3">мною</a> в 2023 году</p>
         </footer>
     </div>
 </body>
