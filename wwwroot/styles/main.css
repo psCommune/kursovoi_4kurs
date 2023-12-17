@@ -40,6 +40,7 @@ main {
 footer {
     height: 2em;
 }
+
 .links ul {
     list-style-type: none;
     display: flex;
@@ -130,6 +131,10 @@ nav a:visited {
     color: #E9E8E0;
 }
 
+.book-card-left{
+    min-width:250px;
+}
+
 .book-card-left .image-container {
     display: flex;
     border-radius: 10px;
@@ -160,7 +165,7 @@ nav a:visited {
     align-self: flex-end;
 }
 
-.link-button:hover {https://avatars.githubusercontent.com/u/107453235?v=4
+.link-button:hover {
     background: #D2AB99;
 }
 
@@ -183,13 +188,28 @@ nav a:visited {
 }
 
 .link-button {
-    padding: 0.3em 0.5em;
-    background: #E9E8E0;
+    font-family: inherit; /*наследование семейства шрифта от html или body*/
+    min-width: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+    appearance: none;
+    border: 0;
     border-radius: 5px;
+    background: white;
+    color: #242C35;
+    padding: 0.3em 0.5em;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .link-button:hover {
-    background: #D2AB99;
+    background: #282828;
+    color: #D2AB99;
+}
+
+.link-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #cbd6ee;
 }
 
 .space{
