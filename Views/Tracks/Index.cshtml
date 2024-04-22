@@ -1,0 +1,75 @@
+﻿@using eLibrary.Domain.Entities
+@model TracksCatalogViewModel
+
+
+
+<div class="background-container">
+    <div class="books-container">
+            <div class="categories-list">
+                <h2 class="categories-title">Категории контента:</h2>
+                <ul>
+                    @foreach (Playlist playlist in Model.Playlists)@* выбор авторов\плейлистов  *@
+                    {
+                        @* группировка внутри списка *@
+                        <li><a asp-controller="Tracks" asp-action="Index" asp-route-categoryId="@playlist.Id">
+                            @playlist.Title
+                        </a></li>
+                    }
+                </ul>
+                
+                @* <select атрибуты>
+
+                    <option value="" selected disabled hidden>Отображать:</option>
+                    <optgroup label="Плейлисты">
+                        
+                    </optgroup>
+                </select>   *@              
+            </div>
+            <div class="books-list">
+                <div class="searchbar">
+                    <form>
+                        <label>Найти аудио: </label>
+                        <input type="text" name="searchstring" placeholder="Укажите название" />
+                        <input type="submit" />
+                    </form>
+                </div>
+                @if (User.IsInRole("admin"))
+                {
+                    <div class="searchbar">
+                    <a class="link-button" href="/tracks/addtrack">Добавить аудио</a>
+                    </div>
+                }
+                 @foreach (Track track in Model.Tracks)
+                {
+                    <div class="book-card">
+                        <div class="book-card-left">
+                            <div class="image-container">
+                                <img src="/images/tracks/@track.ImageUrl">
+                            </div>
+                            <div class="space"></div>
+                            @if (User.IsInRole("admin"))
+                            {
+                                <div class="book-card-actions">
+                                    <a class="link-button" asp-controller="Tracks" asp-action="UpdateTrack" asp-route-trackId="@track.Id">Изменить</a>
+                                    <a class="link-button" href="#">Удалить</a>
+                                </div>
+                            }
+                        </div>
+                        <div class="book-card-right">
+                            <h2>@track.Title</h2>
+                            <h3>@track.Author</h3> 
+                            <audio controls="controls">
+                                <source src="/audio/@track.Filename" type="audio/mpeg" /> поддержка мп3
+                                Ваш браузер не поддерживает аудио элемент.
+                            </audio>
+                            <div class="space"></div>
+                            <div class="link-buttons">
+                                
+                                <a class="link-button" download href="/audio/@track.Filename">Скачать</a>
+                            </div>
+                        </div>
+                    </div>
+                } 
+            </div>
+    </div>
+</div>

@@ -17,6 +17,10 @@ namespace eLibrary.ViewModels
 
         public string Username { get; set; }
 
+        
+        /*[Display(Name = "Ваш возраст (полных лет):")]
+        public int UserAge {  get; set; }*/
+
         [MinLength(8, ErrorMessage = "Пароль должен быть длиной 8 или более символов")]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль:")]

@@ -6,7 +6,7 @@ namespace eLibrary.Domain.Entities
     {
         [StringLength(150)]
         public string Pseudonym { get; set; } = null!;
-        [StringLength(300)]
+        [StringLength(500)]
         public string? ImageUrl { get; set; }
         public List<Track> Tracks { get; set; }
 

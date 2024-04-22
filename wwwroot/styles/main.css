@@ -137,13 +137,13 @@ nav a:visited {
 
 .book-card-left .image-container {
     display: flex;
-    border-radius: 10px;
     overflow: hidden;
 }
 
 .book-card-left img {
-    max-width: 140px;
-    max-height: 140px;
+    border-radius: 100%;
+    max-width: 120px;
+    max-height: 120px;
 }
 
 .book-card-right {

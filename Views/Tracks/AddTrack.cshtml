@@ -1,0 +1,44 @@
+﻿@model TrackViewModel
+<head>
+    <link rel="stylesheet" href="~/styles/addbook.css" />
+</head>
+
+<div class="background-container">
+    <div class="book-form">
+        <form method="post" enctype="multipart/form-data">
+            <h1>Добавление аудио </h1>
+            <div class="book-card">
+                <div class="book-card-left">
+                    <div class="form-element">
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" />
+                    </div>
+                    <div class="form-element">
+                        <label asp-for="Author"></label>
+                        <input asp-for="Author" />
+                    </div>  
+                    
+                    <div class="form-element">
+                        <label asp-for="Photo"></label>
+                        <input asp-for="Photo" accept=".png" />
+                    </div>
+                    <div class="form-element">
+                        <label asp-for="File"></label>
+                        <input asp-for="File" accept=".mp3" />
+                    </div>
+                    <input type="button" id="backButton" value="Назад" />
+                    <input type="submit" value="Сохранить" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // получаем кнопку по ее селектору CSS
+    let backButton = document.querySelector('#backButton');
+    // добавляем обработчик события
+    backButton.onclick = () => {
+        window.location = "/tracks/index";
+    };
+</script>

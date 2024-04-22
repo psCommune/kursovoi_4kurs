@@ -9,15 +9,14 @@ using System.Security.Principal;
 
 namespace eLibrary.Controllers
 {
-    public class UserController :Controller
+    public class UserController : Controller
     {
-        private const int adminRoleId = 2;
         private const int clientRoleId = 1;
+        private const int adminRoleId = 2;
 
         public IActionResult Login ()
         {
             return View();
-
         }
 
         [HttpGet]
@@ -66,7 +65,7 @@ namespace eLibrary.Controllers
                 return View(login);
             }
             await SignIn(newUser);
-            return RedirectToAction("Index", "Books");
+            return RedirectToAction("Index", "Tracks");
             
         }
 
