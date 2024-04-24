@@ -44,7 +44,6 @@ namespace eLibrary.Controllers
             // добавляем список в модель представления
             viewModel.Playlists.AddRange(items);
             return View(viewModel);
-            /*return View(viewModel);в примере возвращают playlists*/
         }
 
         [HttpPost]
@@ -97,8 +96,8 @@ namespace eLibrary.Controllers
                 Author = track.Author,
                 Title = track.Title,
                 FileString = track.Filename,
-                PhotoString = track.ImageUrl
-                /*PlaylistId = track.PlaylistId*/ /*кофликт в Track - нельзя приравнивать если там ставить ?*/
+                PhotoString = track.ImageUrl,
+                PlaylistId = track.PlaylistId 
             };
             var playlists = await reader.GetPlaylistsAsync();
             var items = playlists.Select(c => new SelectListItem { Text = c.Title, Value = c.Id.ToString() });
