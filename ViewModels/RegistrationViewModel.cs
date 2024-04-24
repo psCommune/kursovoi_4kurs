@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace eLibrary.ViewModels
+namespace kursovoi_4kurs.ViewModels
 {
     public class RegistrationViewModel
     {

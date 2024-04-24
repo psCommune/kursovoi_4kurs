@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace eLibrary.Migrations
+namespace kursovoi_4kurs.Migrations
 {
     /// <inheritdoc />
-    public partial class asdqwe : Migration
+    public partial class newseed2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -63,7 +63,7 @@ namespace eLibrary.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
                     Author = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Filename = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
                     PlaylistId = table.Column<int>(type: "int", nullable: true),
                     AuthorId = table.Column<int>(type: "int", nullable: true)

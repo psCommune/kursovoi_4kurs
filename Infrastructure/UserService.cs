@@ -1,9 +1,9 @@
-﻿using eLibrary.Domain.Entities;
-using eLibrary.Domain.Services;
+﻿using kursovoi_4kurs.Domain.Entities;
+using kursovoi_4kurs.Domain.Services;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace eLibrary.Infrastructure
+namespace kursovoi_4kurs.Infrastructure
 {
     public class UserService : IUserService
     {

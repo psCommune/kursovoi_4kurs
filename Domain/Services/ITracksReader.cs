@@ -1,6 +1,6 @@
-﻿using eLibrary.Domain.Entities;
+﻿using kursovoi_4kurs.Domain.Entities;
 
-namespace eLibrary.Domain.Services
+namespace kursovoi_4kurs.Domain.Services
 {
     public interface ITracksReader
     {

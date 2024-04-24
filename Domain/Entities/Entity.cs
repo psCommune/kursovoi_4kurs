@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace eLibrary.Domain.Entities
+namespace kursovoi_4kurs.Domain.Entities
 {
     public abstract class Entity
     {

@@ -1,6 +1,6 @@
-﻿using eLibrary.Domain.Entities;
+﻿using kursovoi_4kurs.Domain.Entities;
 
-namespace eLibrary.ViewModels
+namespace kursovoi_4kurs.ViewModels
 {
     public class TracksCatalogViewModel
     {

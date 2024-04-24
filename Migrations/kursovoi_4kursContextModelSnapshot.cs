@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using eLibrary.Data;
+using kursovoi_4kurs.Data;
 
 #nullable disable
 
-namespace eLibrary.Migrations
+namespace kursovoi_4kurs.Migrations
 {
-    [DbContext(typeof(ELibraryContext))]
-    partial class ELibraryContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(kursovoi_4kursContext))]
+    partial class kursovoi_4kursContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +22,7 @@ namespace eLibrary.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("eLibrary.Domain.Entities.Author", b =>
+            modelBuilder.Entity("kursovoi_4kurs.Domain.Entities.Author", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -44,7 +44,7 @@ namespace eLibrary.Migrations
                     b.ToTable("Authors");
                 });
 
-            modelBuilder.Entity("eLibrary.Domain.Entities.Playlist", b =>
+            modelBuilder.Entity("kursovoi_4kurs.Domain.Entities.Playlist", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -76,7 +76,7 @@ namespace eLibrary.Migrations
                     b.ToTable("Playlists");
                 });
 
-            modelBuilder.Entity("eLibrary.Domain.Entities.Role", b =>
+            modelBuilder.Entity("kursovoi_4kurs.Domain.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -94,7 +94,7 @@ namespace eLibrary.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("eLibrary.Domain.Entities.Track", b =>
+            modelBuilder.Entity("kursovoi_4kurs.Domain.Entities.Track", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -137,7 +137,7 @@ namespace eLibrary.Migrations
                     b.ToTable("Tracks");
                 });
 
-            modelBuilder.Entity("eLibrary.Domain.Entities.User", b =>
+            modelBuilder.Entity("kursovoi_4kurs.Domain.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -179,22 +179,22 @@ namespace eLibrary.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("eLibrary.Domain.Entities.Track", b =>
+            modelBuilder.Entity("kursovoi_4kurs.Domain.Entities.Track", b =>
                 {
-                    b.HasOne("eLibrary.Domain.Entities.Author", null)
+                    b.HasOne("kursovoi_4kurs.Domain.Entities.Author", null)
                         .WithMany("Tracks")
                         .HasForeignKey("AuthorId");
 
-                    b.HasOne("eLibrary.Domain.Entities.Playlist", "Playlist")
+                    b.HasOne("kursovoi_4kurs.Domain.Entities.Playlist", "Playlist")
                         .WithMany("Tracks")
                         .HasForeignKey("PlaylistId");
 
                     b.Navigation("Playlist");
                 });
 
-            modelBuilder.Entity("eLibrary.Domain.Entities.User", b =>
+            modelBuilder.Entity("kursovoi_4kurs.Domain.Entities.User", b =>
                 {
-                    b.HasOne("eLibrary.Domain.Entities.Role", "Role")
+                    b.HasOne("kursovoi_4kurs.Domain.Entities.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -203,12 +203,12 @@ namespace eLibrary.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("eLibrary.Domain.Entities.Author", b =>
+            modelBuilder.Entity("kursovoi_4kurs.Domain.Entities.Author", b =>
                 {
                     b.Navigation("Tracks");
                 });
 
-            modelBuilder.Entity("eLibrary.Domain.Entities.Playlist", b =>
+            modelBuilder.Entity("kursovoi_4kurs.Domain.Entities.Playlist", b =>
                 {
                     b.Navigation("Tracks");
                 });

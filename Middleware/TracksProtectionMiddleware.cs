@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
-namespace eLibrary.Middleware
+namespace kursovoi_4kurs.Middleware
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class TracksProtectionMiddleware

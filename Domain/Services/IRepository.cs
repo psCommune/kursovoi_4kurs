@@ -1,7 +1,7 @@
-﻿using eLibrary.Domain.Entities;
+﻿using kursovoi_4kurs.Domain.Entities;
 using System.Linq.Expressions;
 
-namespace eLibrary.Domain.Services
+namespace kursovoi_4kurs.Domain.Services
 {
     public interface IRepository<T> where T : Entity
     {

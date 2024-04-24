@@ -1,13 +1,13 @@
-﻿using eLibrary.Domain.Entities;
-using eLibrary.Domain.Services;
-using eLibrary.ViewModels;
+﻿using kursovoi_4kurs.Domain.Entities;
+using kursovoi_4kurs.Domain.Services;
+using kursovoi_4kurs.ViewModels;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Security.Principal;
 
-namespace eLibrary.Controllers
+namespace kursovoi_4kurs.Controllers
 {
     public class UserController : Controller
     {

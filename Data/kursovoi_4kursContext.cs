@@ -1,11 +1,11 @@
-﻿using eLibrary.Domain.Entities;
+﻿using kursovoi_4kurs.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace eLibrary.Data
+namespace kursovoi_4kurs.Data
 {
-    public class ELibraryContext:DbContext
+    public class kursovoi_4kursContext:DbContext
     {
-        public ELibraryContext (DbContextOptions options) : base(options)
+        public kursovoi_4kursContext (DbContextOptions options) : base(options)
         {
 
         }

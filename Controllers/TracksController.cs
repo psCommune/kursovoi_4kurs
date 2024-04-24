@@ -1,12 +1,12 @@
-﻿using eLibrary.Domain.Entities;
-using eLibrary.Domain.Services;
-using eLibrary.Infrastructure;
-using eLibrary.ViewModels;
+﻿using kursovoi_4kurs.Domain.Entities;
+using kursovoi_4kurs.Domain.Services;
+using kursovoi_4kurs.Infrastructure;
+using kursovoi_4kurs.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace eLibrary.Controllers
+namespace kursovoi_4kurs.Controllers
 {
     public class TracksController : Controller
     {
@@ -50,6 +50,13 @@ namespace eLibrary.Controllers
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> AddTrack(TrackViewModel trackVm)
         {
+            // загружаем список плейлистов (List<Playlist>)
+            var playlists = await reader.GetPlaylistsAsync();
+            // получаем элементы для <select> с помощью нашего листа категорий
+            // (List<SelectListItem>)
+            var items = playlists.Select(c => new SelectListItem { Text = c.Title, Value = c.Id.ToString() });
+            // добавляем список в модель представления
+            trackVm.Playlists.AddRange(items);
             if (!ModelState.IsValid)
             {
                 return View(trackVm);
@@ -127,7 +134,7 @@ namespace eLibrary.Controllers
             // выведем сообщение если трек не найден
             if (track is null)
             {
-                ModelState.AddModelError("not_found", "Аудио не найдено!");
+                ModelState.AddModelError("not_found", "Трек не найден!");
                 return View(trackVm);
             }
             try

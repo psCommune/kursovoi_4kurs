@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
-namespace eLibrary.ViewModels
+namespace kursovoi_4kurs.ViewModels
 {
     public class UpdateTrackViewModel
     {
@@ -10,7 +10,7 @@ namespace eLibrary.ViewModels
 
         [MinLength(2)]
         [MaxLength(150)]
-        [Display(Name = "Название аудио")]
+        [Display(Name = "Название")]
         public string Title { get; set; } = string.Empty;
 
         [MinLength(2)]

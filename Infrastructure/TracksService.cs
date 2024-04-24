@@ -1,8 +1,8 @@
-﻿using eLibrary.Domain.Entities;
-using eLibrary.Domain.Services;
+﻿using kursovoi_4kurs.Domain.Entities;
+using kursovoi_4kurs.Domain.Services;
 using static System.Reflection.Metadata.BlobBuilder;
 
-namespace eLibrary.Infrastructure
+namespace kursovoi_4kurs.Infrastructure
 {
     public class TracksService : ITracksService
     {

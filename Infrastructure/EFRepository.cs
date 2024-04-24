@@ -1,10 +1,10 @@
-﻿using eLibrary.Data;
-using eLibrary.Domain.Entities;
-using eLibrary.Domain.Services;
+﻿using kursovoi_4kurs.Data;
+using kursovoi_4kurs.Domain.Entities;
+using kursovoi_4kurs.Domain.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace eLibrary.Infrastructure
+namespace kursovoi_4kurs.Infrastructure
 {
     public class EFRepository<T> :IRepository<T> where T : Entity
     {
@@ -44,9 +44,9 @@ namespace eLibrary.Infrastructure
         }
 
        
-        private readonly ELibraryContext context;
+        private readonly kursovoi_4kursContext context;
 
-        public EFRepository (ELibraryContext context)
+        public EFRepository (kursovoi_4kursContext context)
         {
             this.context = context;
         }

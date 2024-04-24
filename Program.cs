@@ -1,13 +1,13 @@
-using eLibrary.Data;
-using eLibrary.Domain.Entities;
-using eLibrary.Domain.Services;
-using eLibrary.Infrastructure;
-using eLibrary.Middleware;
+using kursovoi_4kurs.Data;
+using kursovoi_4kurs.Domain.Entities;
+using kursovoi_4kurs.Domain.Services;
+using kursovoi_4kurs.Infrastructure;
+using kursovoi_4kurs.Middleware;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace eLibrary
+namespace kursovoi_4kurs
 {
     public class Program
     {
@@ -35,10 +35,10 @@ namespace eLibrary
                     opt.LoginPath = "/User/Login";
                     opt.AccessDeniedPath = "/User/AccessDenied";
                 });
-            builder.Services.AddDbContext<ELibraryContext>(opt => opt.UseSqlServer("Server=.; Database=DaatabaseHome15; Integrated Security = true; TrustServerCertificate=Yes"));
+            builder.Services.AddDbContext<kursovoi_4kursContext>(opt => opt.UseSqlServer("Server=.; Database=DaatabaseHome17; Integrated Security = true; TrustServerCertificate=Yes"));
             DbContextOptionsBuilder optionsBuilder = new DbContextOptionsBuilder();
-            optionsBuilder.UseSqlServer("Server=.; Database=DaatabaseHome15; Integrated Security = true; TrustServerCertificate=Yes");
-            using (var context = new ELibraryContext(optionsBuilder.Options))//вызов посева начальных данных
+            optionsBuilder.UseSqlServer("Server=.; Database=DaatabaseHome17; Integrated Security = true; TrustServerCertificate=Yes");
+            using (var context = new kursovoi_4kursContext(optionsBuilder.Options))//вызов посева начальных данных
             {
                 EFInitialSeed.Seed(context);
             }
