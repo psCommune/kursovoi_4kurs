@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\images\banner.png" />
+    <Content Remove="wwwroot\images\backgroundLogin.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\images\banner.png">
+    <None Include="wwwroot\images\backgroundLogin.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -29,6 +29,7 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\tracks\" />
   </ItemGroup>
 
 </Project>

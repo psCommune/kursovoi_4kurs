@@ -5,34 +5,33 @@
 </head>
 
 <div class="background-container">
-    <div class="track-card">
-        <div class="track-card-left">
-            @if (User.IsInRole("admin"))
-            {
-                <p>Удалить запись?</p>
-                <form method="post" enctype="multipart/form-data">
-                    <input name="id" type="hidden" value="@Model.Id" />
-                    <div asp-validation-summary="All" class="error-messages"></div>
-                    <div class="form-element form-element-buttons">
-                        <input type="submit" value="Удалить" />
-                        <input type="button" id="backButton" value="Назад" />
+    <input name="id" type="hidden" value="@Model.Id"/>
+    <div class="track-form">
+        <form method="post" enctype="multipart/form-data">
+        <p>Удалить запись?</p>
+            <div class="track-card">
+                <div class="track-card-left">
+                    <div class="image-container">
+                        <img src="/images/tracks/@Model.ImageUrl">
                     </div>
-                    
-                </form>
-            }
-        </div>
-        <div class="track-card-right">
-            <h2>@Model.Title</h2>
-            <h3>@Model.Author</h3>
-            <audio controls="controls">
-                <source src="/audio/@Model.Filename" type="audio/mpeg" /> поддержка мп3
-                Ваш браузер не поддерживает аудио элемент.
-            </audio>
-            <div class="space"></div>
-            <div class="link-buttons">
-                <a class="link-button" download href="/audio/@Model.Filename">Скачать</a>
+                </div>
+                <div class="track-card-right">
+                    <h2>@Model.Title</h2>
+                    <h3>@Model.Author</h3>
+                    <audio controls="controls">
+                        <source src="/audio/@Model.Filename" type="audio/mpeg" /> поддержка мп3
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
+                    <h3>@Model.Playlist</h3>
+                    <div class="space"></div>
+                </div>
             </div>
-        </div>
+            <div asp-validation-summary="All" class="error-messages"></div>
+            <div class="track-card-actions">
+                <input type="button" id="backButton" value="Назад" />
+                <input type="submit" value="Удалить" />
+            </div>
+        </form>
     </div>
 </div>
 
