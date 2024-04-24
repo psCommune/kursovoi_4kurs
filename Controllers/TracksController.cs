@@ -36,17 +36,15 @@ namespace eLibrary.Controllers
         public async Task<IActionResult> AddTrack()
         {
             var viewModel = new TrackViewModel();
-
             // загружаем список плейлистов (List<Playlist>)
             var playlists = await reader.GetPlaylistsAsync();
-
             // получаем элементы для <select> с помощью нашего листа плейлистов
             // (List<SelectListItem>)
             var items = playlists.Select(c => new SelectListItem { Text = c.Title, Value = c.Id.ToString() });
-
             // добавляем список в модель представления
             viewModel.Playlists.AddRange(items);
             return View(viewModel);
+            /*return View(viewModel);в примере возвращают playlists*/
         }
 
         [HttpPost]
@@ -81,7 +79,6 @@ namespace eLibrary.Controllers
                 ModelState.AddModelError("database", "Ошибка при сохранении в базу данных.");
                 return View(trackVm);
             }
-
             return RedirectToAction("Index", "Tracks");
         }
 
@@ -98,10 +95,11 @@ namespace eLibrary.Controllers
             {
                 Id = track.Id,
                 Author = track.Author,
-                Title = track.Title
-                /*PlaylistId = track.PlaylistId*/ //кофликт в Track - нельзя приравнивать если там ставить "?"
+                Title = track.Title,
+                FileString = track.Filename,
+                PhotoString = track.ImageUrl
+                /*PlaylistId = track.PlaylistId*/ /*кофликт в Track - нельзя приравнивать если там ставить ?*/
             };
-
             var playlists = await reader.GetPlaylistsAsync();
             var items = playlists.Select(c => new SelectListItem { Text = c.Title, Value = c.Id.ToString() });
             trackVm.Playlists.AddRange(items);
@@ -127,7 +125,7 @@ namespace eLibrary.Controllers
             }
             // находим трек по Id
             var track = await reader.FindTrackAsync(trackVm.Id);
-            // если трек почему-то не найден, то выведем сообщение
+            // выведем сообщение если трек не найден
             if (track is null)
             {
                 ModelState.AddModelError("not_found", "Аудио не найдено!");
@@ -173,7 +171,7 @@ namespace eLibrary.Controllers
             return RedirectToAction("Index", "Tracks");
         }
 
-        /*[HttpGet]
+        [HttpGet]
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteTrack(int trackId)
         {
@@ -192,7 +190,7 @@ namespace eLibrary.Controllers
             var track = await reader.FindTrackAsync(trackId);
             try
             {
-                await TracksService.DeleteTrack(track);
+                await tracksService.DeleteTrack(track);
             }
             catch (Exception)
             {
@@ -201,6 +199,6 @@ namespace eLibrary.Controllers
 
             }
             return RedirectToAction("Index", "Tracks");
-        }*/
+        }
     }
 }

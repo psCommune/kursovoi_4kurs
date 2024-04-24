@@ -13,11 +13,11 @@ namespace eLibrary.ViewModels
         [MinLength(2)]
         [MaxLength(150)]
         [Display(Name = "Автор")]
-        public string Author { get; set; }
+        public string Author { get; set; } = string.Empty;
 
         [Display(Name = "Изображение")]
         [Required]
-        public IFormFile? Photo { get; set; }
+        public IFormFile Photo { get; set; }
 
         [Display(Name = "Файл аудио (mp3)")]
         [Required]

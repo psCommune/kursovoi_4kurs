@@ -19,15 +19,15 @@ namespace eLibrary.ViewModels
         public string Author { get; set; }
 
         [Display(Name = "Изображение")]
-        [Required]
-        public IFormFile? Photo { get; set; }
+        public IFormFile? Photo { get; set; } = null!;
+        public string? PhotoString { get; set; }
 
         [Display(Name = "Файл аудио (mp3)")]
-        [Required]
-        public IFormFile File { get; set; }
+        public IFormFile? File { get; set; }
+        public string? FileString { get; set; }
 
-        [Display(Name = "Плейлист")]
         [Required]
+        [Display(Name = "Плейлист")]
         public int? PlaylistId { get; set; }
         public List<SelectListItem>? Playlists { get; set; } = new();
     }

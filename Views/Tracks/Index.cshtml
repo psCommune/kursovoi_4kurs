@@ -1,10 +1,8 @@
 ﻿@using eLibrary.Domain.Entities
 @model TracksCatalogViewModel
 
-
-
 <div class="background-container">
-    <div class="books-container">
+    <div class="tracks-container">
             <div class="categories-list">
                 <h2 class="categories-title">Категории контента:</h2>
                 <ul>
@@ -16,16 +14,8 @@
                         </a></li>
                     }
                 </ul>
-                
-                @* <select атрибуты>
-
-                    <option value="" selected disabled hidden>Отображать:</option>
-                    <optgroup label="Плейлисты">
-                        
-                    </optgroup>
-                </select>   *@              
             </div>
-            <div class="books-list">
+            <div class="tracks-list">
                 <div class="searchbar">
                     <form>
                         <label>Найти аудио: </label>
@@ -36,26 +26,26 @@
                 @if (User.IsInRole("admin"))
                 {
                     <div class="searchbar">
-                    <a class="link-button" href="/tracks/addtrack">Добавить аудио</a>
+                        <a class="link-button" href="/tracks/addtrack">Добавить аудио</a>
                     </div>
                 }
                  @foreach (Track track in Model.Tracks)
                 {
-                    <div class="book-card">
-                        <div class="book-card-left">
+                    <div class="track-card">
+                        <div class="track-card-left">
                             <div class="image-container">
                                 <img src="/images/tracks/@track.ImageUrl">
                             </div>
                             <div class="space"></div>
                             @if (User.IsInRole("admin"))
                             {
-                                <div class="book-card-actions">
+                                <div class="track-card-actions">
                                     <a class="link-button" asp-controller="Tracks" asp-action="UpdateTrack" asp-route-trackId="@track.Id">Изменить</a>
-                                    <a class="link-button" href="#">Удалить</a>
+                                    <a class="link-button" asp-controller="Tracks" asp-action="DeleteTrack" asp-route-trackId="@track.Id">Удалить</a>
                                 </div>
                             }
                         </div>
-                        <div class="book-card-right">
+                        <div class="track-card-right">
                             <h2>@track.Title</h2>
                             <h3>@track.Author</h3> 
                             <audio controls="controls">
@@ -64,7 +54,6 @@
                             </audio>
                             <div class="space"></div>
                             <div class="link-buttons">
-                                
                                 <a class="link-button" download href="/audio/@track.Filename">Скачать</a>
                             </div>
                         </div>

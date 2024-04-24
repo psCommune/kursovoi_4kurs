@@ -1,14 +1,14 @@
 ﻿@model TrackViewModel
 <head>
-    <link rel="stylesheet" href="~/styles/addbook.css" />
+    <link rel="stylesheet" href="~/styles/addtrack.css" />
 </head>
 
 <div class="background-container">
-    <div class="book-form">
+    <div class="track-form">
         <form method="post" enctype="multipart/form-data">
             <h1>Добавление аудио </h1>
-            <div class="book-card">
-                <div class="book-card-left">
+            <div class="track-card">
+                <div class="track-card-left">
                     <div class="form-element">
                         <label asp-for="Title"></label>
                         <input asp-for="Title" />
@@ -16,8 +16,11 @@
                     <div class="form-element">
                         <label asp-for="Author"></label>
                         <input asp-for="Author" />
-                    </div>  
-                    
+                    </div> 
+                    <div class="form-element">
+                        <label asp-for="PlaylistId"></label>
+                        <select asp-for="PlaylistId" asp-items="Model.Playlists"></select>
+                    </div>
                     <div class="form-element">
                         <label asp-for="Photo"></label>
                         <input asp-for="Photo" accept=".png" />

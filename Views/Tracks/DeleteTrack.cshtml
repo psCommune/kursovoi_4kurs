@@ -1,0 +1,46 @@
+﻿@using eLibrary.Domain.Entities
+@model Track
+<head>
+    <link rel="stylesheet" href="~/styles/addtrack.css" />
+</head>
+
+<div class="background-container">
+    <div class="track-card">
+        <div class="track-card-left">
+            @if (User.IsInRole("admin"))
+            {
+                <p>Удалить запись?</p>
+                <form method="post" enctype="multipart/form-data">
+                    <input name="id" type="hidden" value="@Model.Id" />
+                    <div asp-validation-summary="All" class="error-messages"></div>
+                    <div class="form-element form-element-buttons">
+                        <input type="submit" value="Удалить" />
+                        <input type="button" id="backButton" value="Назад" />
+                    </div>
+                    
+                </form>
+            }
+        </div>
+        <div class="track-card-right">
+            <h2>@Model.Title</h2>
+            <h3>@Model.Author</h3>
+            <audio controls="controls">
+                <source src="/audio/@Model.Filename" type="audio/mpeg" /> поддержка мп3
+                Ваш браузер не поддерживает аудио элемент.
+            </audio>
+            <div class="space"></div>
+            <div class="link-buttons">
+                <a class="link-button" download href="/audio/@Model.Filename">Скачать</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // получаем кнопку по ее селектору CSS
+    let backButton = document.querySelector('#backButton');
+    // добавляем обработчик события
+    backButton.onclick = () => {
+        window.location = "/tracks/Index";
+    };
+</script>

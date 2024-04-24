@@ -9,7 +9,7 @@ namespace eLibrary.Domain.Entities
         [StringLength(150)]
         public string Author { get; set; } = null!;
         [StringLength(500)]
-        public string? ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
         [StringLength(300)]
         public string Filename { get; set; }
         
