@@ -7,6 +7,7 @@ namespace kursovoi_4kurs.Domain.Services
         Task<string> LoadFile (Stream file, string path);
         Task<string> LoadPhoto (Stream file, string path);
         Task AddTrack (Track track);
+        Task AddPlaylist (Playlist playlist);
         Task UpdateTrack (Track track);
         Task DeleteTrack (Track track);
     }

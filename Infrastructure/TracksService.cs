@@ -7,13 +7,20 @@ namespace kursovoi_4kurs.Infrastructure
     public class TracksService : ITracksService
     {
         private readonly IRepository<Track> tracks;
-        public TracksService(IRepository<Track> tracks)
+        private readonly IRepository<Playlist> playlists;
+        public TracksService(IRepository<Track> tracks, IRepository<Playlist> playlists)
         {
             this.tracks = tracks;
+            this.playlists = playlists;
         }
         public async Task AddTrack(Track track)
         {
             await tracks.AddAsync(track);
+        }
+
+        public async Task AddPlaylist(Playlist playlist)
+        {
+            await playlists.AddAsync(playlist);
         }
 
         public async Task DeleteTrack(Track track)
@@ -60,5 +67,7 @@ namespace kursovoi_4kurs.Infrastructure
 
             return filename;
         }
+
+        
     }
 }

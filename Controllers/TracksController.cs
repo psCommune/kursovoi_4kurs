@@ -71,7 +71,7 @@ namespace kursovoi_4kurs.Controllers
                 };
                 string wwwroot = appEnvironment.WebRootPath; // получаем путь до wwwroot
 
-                track.Filename = await tracksService.LoadFile(trackVm.File.OpenReadStream(), Path.Combine(wwwroot, "audio", "tracks"));
+                track.Filename = await tracksService.LoadFile(trackVm.File.OpenReadStream(), Path.Combine(wwwroot, "tracks"));
                 track.ImageUrl = await tracksService.LoadPhoto(trackVm.Photo.OpenReadStream(), Path.Combine(wwwroot, "images", "tracks"));
                 await tracksService.AddTrack(track);
             }
@@ -202,6 +202,48 @@ namespace kursovoi_4kurs.Controllers
             {
                 ModelState.AddModelError("database", "Ошибка при удалении");
                 return View(track);
+            }
+            return RedirectToAction("Index", "Tracks");
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> AddPlaylist()
+        {
+            var viewModel = new PlaylistViewModel();
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> AddPlaylist(PlaylistViewModel playlistVm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(playlistVm);
+            }
+            try
+            {
+                var playlist = new Playlist
+                {
+                    Title = playlistVm.Title,
+                    Description = playlistVm.Description,
+                    CreateDate = DateTime.Now
+                };
+                string wwwroot = appEnvironment.WebRootPath; // получаем путь до wwwroot
+
+                playlist.ImageUrl = await tracksService.LoadPhoto(playlistVm.Photo.OpenReadStream(), Path.Combine(wwwroot, "images", "tracks"));
+                await tracksService.AddPlaylist(playlist);
+            }
+            catch (IOException)
+            {
+                ModelState.AddModelError("ioerror", "Не удалось сохранить файл.");
+                return View(playlistVm);
+            }
+            catch
+            {
+                ModelState.AddModelError("database", "Ошибка при сохранении в базу данных.");
+                return View(playlistVm);
             }
             return RedirectToAction("Index", "Tracks");
         }
