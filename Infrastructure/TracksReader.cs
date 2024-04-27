@@ -21,7 +21,6 @@ namespace kursovoi_4kurs.Infrastructure
             (_, 0) => await tracks.FindWhere(track => track.Title.Contains(searchString) || track.Author.Contains(searchString)),
             (_, _) => await tracks.FindWhere(track => track.PlaylistId == playlistId && (track.Title.Contains(searchString) || track.Author.Contains(searchString)))
         };
-
         public async Task<List<Playlist>> GetPlaylistsAsync() => await playlists.GetAllAsync();//Получение плейлистов
     }
 }

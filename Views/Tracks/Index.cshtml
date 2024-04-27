@@ -9,7 +9,7 @@
                     @foreach (Playlist playlist in Model.Playlists)@* выбор авторов\плейлистов  *@
                     {
                         @* группировка внутри списка *@
-                        <li><a asp-controller="Tracks" asp-action="Index" asp-route-categoryId="@playlist.Id">
+                        <li><a asp-controller="Tracks" asp-action="Index" asp-route-playlistId="@playlist.Id">
                             @playlist.Title
                         </a></li>
                     }

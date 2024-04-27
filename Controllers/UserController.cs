@@ -61,7 +61,7 @@ namespace kursovoi_4kurs.Controllers
             }
             User? newUser = await userService.GetUserAsync(login.Username, login.Password);
             if (newUser == null) {
-                ModelState.AddModelError("reg_error", $"неверное имя пользователя или пароль");
+                ModelState.AddModelError("reg_error", $"Неверное имя пользователя или пароль");
                 return View(login);
             }
             await SignIn(newUser);

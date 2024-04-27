@@ -10,17 +10,6 @@ namespace kursovoi_4kurs.Controllers
 {
     public class TracksController : Controller
     {
-        [Authorize]
-        public async Task<IActionResult> Index (string ?searchString = "", int playlistId = 0)
-        {
-            var viewModel = new TracksCatalogViewModel
-            {
-                Tracks = await reader.FindTracksAsync(searchString, playlistId),
-                Playlists = await reader.GetPlaylistsAsync()
-            };
-            return View(viewModel);
-        }
-
         private readonly ITracksReader reader;
         private readonly ITracksService tracksService;
         private readonly IWebHostEnvironment appEnvironment;
@@ -31,6 +20,17 @@ namespace kursovoi_4kurs.Controllers
             this.appEnvironment = appEnvironment;
         }
 
+        [Authorize]
+        public async Task<IActionResult> Index (string ?searchString = "", int playlistId = 0)
+        {
+            var viewModel = new TracksCatalogViewModel
+            {
+                Tracks = await reader.FindTracksAsync(searchString, playlistId),
+                Playlists = await reader.GetPlaylistsAsync()
+            };
+            return View(viewModel);
+        }
+            
         [HttpGet]
         [Authorize(Roles = "admin")]
         public async Task<IActionResult> AddTrack()
@@ -202,7 +202,6 @@ namespace kursovoi_4kurs.Controllers
             {
                 ModelState.AddModelError("database", "Ошибка при удалении");
                 return View(track);
-
             }
             return RedirectToAction("Index", "Tracks");
         }

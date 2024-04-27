@@ -9,19 +9,18 @@ namespace kursovoi_4kurs.ViewModels
         [Display(Name = "Полное имя:")]
         public string Fullname { get; set; }
 
-        [MinLength(3, ErrorMessage = "Имя пользователя должно быть 3 или более символов")]
+        [MinLength(3, ErrorMessage = "Имя пользователя должно состоять из 3х или более символов")]
         [MaxLength(50, ErrorMessage = "Имя пользователя не должно превышать 50 символов")]
         [RegularExpression(@"[A-Za-z0-9_]*",
         ErrorMessage = "Имя пользователя должно содержать только латинские символы, цифры и символ подчеркивания")]
         [Display(Name = "Имя пользователя:")]
 
         public string Username { get; set; }
-
         
         /*[Display(Name = "Ваш возраст (полных лет):")]
         public int UserAge {  get; set; }*/
 
-        [MinLength(8, ErrorMessage = "Пароль должен быть длиной 8 или более символов")]
+        [MinLength(8, ErrorMessage = "Пароль должен быть длиной не меньше 8ми символов")]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль:")]
         public string Password { get; set; }

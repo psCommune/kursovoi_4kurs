@@ -21,6 +21,7 @@ namespace kursovoi_4kurs
 
             builder.Services.AddScoped<IRepository<Track>, EFRepository<Track>>();
             builder.Services.AddScoped<IRepository<Playlist>, EFRepository<Playlist>>();
+            builder.Services.AddScoped<IRepository<Author>, EFRepository<Author>>();
 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<ITracksReader, TracksReader>();
