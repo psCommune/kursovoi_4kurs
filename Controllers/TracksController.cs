@@ -71,7 +71,7 @@ namespace kursovoi_4kurs.Controllers
                 };
                 string wwwroot = appEnvironment.WebRootPath; // получаем путь до wwwroot
 
-                track.Filename = await tracksService.LoadFile(trackVm.File.OpenReadStream(), Path.Combine(wwwroot, "tracks"));
+                track.Filename = await tracksService.LoadFile(trackVm.File.OpenReadStream(), Path.Combine(wwwroot, "audio", "tracks"));
                 track.ImageUrl = await tracksService.LoadPhoto(trackVm.Photo.OpenReadStream(), Path.Combine(wwwroot, "images", "tracks"));
                 await tracksService.AddTrack(track);
             }
@@ -191,9 +191,9 @@ namespace kursovoi_4kurs.Controllers
 
         [HttpPost]
         [Authorize(Roles = "admin")]
-        public async Task<IActionResult> DeleteTrackPost(int trackId)
+        public async Task<IActionResult> DeleteTrackPost(int id)
         {
-            var track = await reader.FindTrackAsync(trackId);
+            var track = await reader.FindTrackAsync(id);
             try
             {
                 await tracksService.DeleteTrack(track);

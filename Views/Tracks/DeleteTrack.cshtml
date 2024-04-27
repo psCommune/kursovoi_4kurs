@@ -5,9 +5,8 @@
 </head>
 
 <div class="background-container">
-    <input name="id" type="hidden" value="@Model.Id"/>
     <div class="track-form">
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" asp-controller="Tracks" asp-action="DeleteTrackPost">
         <p>Удалить запись?</p>
             <div class="track-card">
                 <div class="track-card-left">
@@ -25,10 +24,12 @@
                     <h3>@Model.Playlist</h3>
                     <div class="space"></div>
                 </div>
+               
             </div>
             <div asp-validation-summary="All" class="error-messages"></div>
             <div class="track-card-actions">
                 <input type="button" id="backButton" value="Назад" />
+                <input name="id" type="hidden" value="@Model.Id" />
                 <input type="submit" value="Удалить" />
             </div>
         </form>
