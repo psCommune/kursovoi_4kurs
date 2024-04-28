@@ -74,8 +74,7 @@ namespace kursovoi_4kurs.Data
                     Title = "Третья запись",
                     Author = "Супер музыкант",
                     ImageUrl = "third.png",
-                    Filename = "3.mp3",
-                    PlaylistId = 1
+                    Filename = "3.mp3"
                 };
                 context.Tracks.Add(firstTrack);
                 context.Tracks.Add(secondTrack);
