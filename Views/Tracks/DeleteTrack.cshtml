@@ -1,0 +1,46 @@
+﻿@using kursovoi_4kurs.Domain.Entities
+@model Track
+<head>
+    <link rel="stylesheet" href="~/styles/addtrack.css" />
+</head>
+
+<div class="background-container">
+    <div class="track-form">
+        <form method="post" asp-controller="Tracks" asp-action="DeleteTrackPost">
+        <p>Удалить запись?</p>
+            <div class="track-card">
+                <div class="track-card-left">
+                    <div class="image-container">
+                        <img src="/images/tracks/@Model.ImageUrl">
+                    </div>
+                </div>
+                <div class="track-card-right">
+                    <h2>@Model.Title</h2>
+                    <h3>@Model.Author</h3>
+                    <audio controls="controls">
+                        <source src="/audio/@Model.Filename" type="audio/mpeg" /> поддержка мп3
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
+                    <h3>@Model.Playlist</h3>
+                    <div class="space"></div>
+                </div>
+               
+            </div>
+            <div asp-validation-summary="All" class="error-messages"></div>
+            <div class="track-card-actions">
+                <input type="button" id="backButton" value="Назад" />
+                <input name="id" type="hidden" value="@Model.Id" />
+                <input type="submit" value="Удалить" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // получаем кнопку по ее селектору CSS
+    let backButton = document.querySelector('#backButton');
+    // добавляем обработчик события
+    backButton.onclick = () => {
+        window.location = "/tracks/Index";
+    };
+</script>
