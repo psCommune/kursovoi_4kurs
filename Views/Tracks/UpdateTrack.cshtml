@@ -1,0 +1,60 @@
+﻿@using kursovoi_4kurs.Domain.Entities
+@model UpdateTrackViewModel
+<head>
+    <link rel="stylesheet" href="~/styles/updatetrack.css" />
+</head>
+
+<div class="background-container">
+    <input asp-for="Id" type="hidden" />
+    <div class="track-form">
+        <form method="post" enctype="multipart/form-data">
+            <h1>Изменение трека</h1>
+            <div class="track-card">
+                <div class="track-card-left">
+                    <div class="form-element">
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" placeholder="Название" />
+                    </div>
+                    <div class="form-element">
+                        <label asp-for="Author"></label>
+                        <input asp-for="Author" placeholder="Автор" />
+                    </div>                    
+                    <div class="form-element">
+                        <label asp-for="PlaylistId"></label>
+                        <select asp-for="PlaylistId" asp-items="Model.Playlists"></select>
+                    </div>
+                    <div class="form-element">
+                        <label asp-for="Photo"></label>
+                        <span>@Model.PhotoString</span>
+                        <input asp-for="Photo" accept=".png" />
+                    </div>
+                    <audio controls="controls">
+                        <source src="/audio/@Model.FileString" type="audio/mpeg" /> поддержка мп3
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
+                    <div class="form-element">
+                        <label asp-for="File"></label>
+                        <span>@Model.FileString</span>
+                        <input asp-for="File" accept=".mp3" />
+                    </div>
+                    <div asp-validation-summary="All" class="error-messages"></div>
+                    <div class="track-card-actions">
+                        <input type="button" id="backButton" value="Назад" />
+                        <input type="submit" value="Сохранить" />
+                        <input asp-for="Id" type="hidden" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script>
+    // получаем кнопку по ее селектору CSS
+    let backButton = document.querySelector('#backButton');
+    // добавляем обработчик события
+    backButton.onclick = () => {
+        window.location = "/tracks/index";
+    };
+</script>

@@ -1,0 +1,86 @@
+﻿@using kursovoi_4kurs.Domain.Entities
+@model TracksCatalogViewModel
+
+<div class="background-container">
+    <div class="tracks-container">
+            <div class="categories-list">
+                <h2 class="categories-title">Плейлисты:</h2>
+                <ul>
+                    @foreach (Playlist playlist in Model.Playlists)@* выбор авторов\плейлистов  *@
+                    {
+                    <div class="playlist-list">
+                        @* группировка внутри списка *@
+                        <li>
+                            <a asp-controller="Tracks" asp-action="Index" asp-route-playlistId="@playlist.Id">@playlist.Title</a>
+                        </li>
+                        @* <div class="playlist-image">
+                            <img src="/images/tracks/@playlist.ImageUrl">
+                        </div> *@
+                    </div>
+                    }
+                </ul>
+            </div>
+            <div class="tracks-list">
+                <div class="searchbar">
+                    <form>
+                        <label>Найти трек: </label>
+                        <input type="text" name="searchstring" placeholder="Укажите название" />
+                        <input type="submit" />
+                    </form>
+                </div>
+                @if (User.IsInRole("admin"))
+                {
+                    <div class="searchbar">
+                        <a class="link-button" href="/tracks/addtrack">Добавить трек</a>
+                        <a class="link-button" href="/tracks/addplaylist">Добавить плейлист</a>
+                    </div>
+                }
+                 @foreach (Track track in Model.Tracks)
+                {
+                    <div class="track-card">
+                        <div class="track-card-left">
+                            <div class="image-container">
+                                <img src="/images/tracks/@track.ImageUrl">
+                            </div>
+                            <div class="space"></div>
+                            @if (User.IsInRole("admin"))
+                            {
+                                <div class="track-card-actions">
+                                    <a class="link-button" asp-controller="Tracks" asp-action="UpdateTrack" asp-route-trackId="@track.Id">Изменить</a>
+                                    <a class="link-button" asp-controller="Tracks" asp-action="DeleteTrack" asp-route-trackId="@track.Id">Удалить</a>
+                                </div>
+                            }
+                        </div>
+                        <div class="track-card-right">
+                            <h2>@track.Title</h2>
+                            <h3>@track.Author</h3>
+
+                        @*<script>var play = 0;</script>
+                        @if (play < 1)
+                        {
+                            <audio controls="controls">
+                                <source src="/audio/@track.Filename" type="audio/mpeg" onclick="play++" /> поддержка мп3
+                                Ваш браузер не поддерживает аудио элемент.
+                            </audio>
+                        }
+                        else
+                        {
+                            <audio controls="controls">
+                                <source src="/audio/@track.Filename" type="audio/mpeg" onclick="play++" /> поддержка мп3
+                                Ваш браузер не поддерживает аудио элемент.
+                            </audio>
+                        } *@
+                            <audio controls="controls">
+                                <source src="/audio/@track.Filename" type="audio/mpeg"/> поддержка мп3
+                                Ваш браузер не поддерживает аудио элемент.
+                            </audio>
+                            <div class="space"></div>
+                            <div class="link-buttons">
+                                <a class="link-button" download href="/audio/@track.Filename">Скачать</a>
+                            </div>
+                        </div>
+                    </div>
+                } 
+            </div>
+    </div>
+</div>
