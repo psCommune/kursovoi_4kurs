@@ -25,11 +25,13 @@ namespace kursovoi_4kurs.Data
             {
                 Playlist firstPlaylist = new Playlist
                 {
-                    Title = "Первый тестовый"
+                    Title = "Первый плейлист",
+                    Description = "Смотрю что работает"
                 };
                 Playlist secondPlaylist = new Playlist
                 {
-                    Title = "Второй тестовый"
+                    Title = "Второй плейлист",
+                    Description = "Вроде с этим все хорошо"
                 };
                 context.Playlists.Add(firstPlaylist);
                 context.Playlists.Add(secondPlaylist);
@@ -76,9 +78,17 @@ namespace kursovoi_4kurs.Data
                     ImageUrl = "third.png",
                     Filename = "3.mp3"
                 };
+                Track fourthTrack = new Track
+                {
+                    Title = "key",
+                    Author = "C418",
+                    ImageUrl = "volume.png",
+                    Filename = "key.mp3"
+                };
                 context.Tracks.Add(firstTrack);
                 context.Tracks.Add(secondTrack);
                 context.Tracks.Add(thirdTrack);
+                context.Tracks.Add(fourthTrack);
             }    
             if(!context.Users.Any())
             {

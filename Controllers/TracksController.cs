@@ -71,7 +71,7 @@ namespace kursovoi_4kurs.Controllers
                 };
                 string wwwroot = appEnvironment.WebRootPath; // получаем путь до wwwroot
 
-                track.Filename = await tracksService.LoadFile(trackVm.File.OpenReadStream(), Path.Combine(wwwroot, "tracks"));
+                track.Filename = await tracksService.LoadFile(trackVm.File.OpenReadStream(), Path.Combine(wwwroot, "audio"));
                 track.ImageUrl = await tracksService.LoadPhoto(trackVm.Photo.OpenReadStream(), Path.Combine(wwwroot, "images", "tracks"));
                 await tracksService.AddTrack(track);
             }
@@ -150,7 +150,7 @@ namespace kursovoi_4kurs.Controllers
                 {
                     track.Filename = await tracksService.LoadFile(
                         trackVm.File.OpenReadStream(),
-                        Path.Combine(wwwroot, "tracks")
+                        Path.Combine(wwwroot, "audio")
                     );
                 }
                 // если формой было передано изображение, то меняем его
